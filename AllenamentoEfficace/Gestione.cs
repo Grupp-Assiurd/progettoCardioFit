@@ -17,26 +17,26 @@ namespace AllenamentoEfficace
         public static double LetturafileMediaGiornaliera()
         {
             double media;
-            using (StreamWriter w = new StreamWriter(DIRECTORY+FILE))
+            using (StreamWriter w = new StreamWriter(DIRECTORY + FILE))
             {
                 Random r = new Random();
-                for(int i = 0; i < 1440; i++)
+                for (int i = 0; i < 1440; i++)
                 {
                     w.WriteLine(r.Next(60, 80));
                 }
                 w.Flush();
             }
-            using(StreamReader sr=new StreamReader(DIRECTORY+FILE))
+            using (StreamReader sr = new StreamReader(DIRECTORY + FILE))
             {
                 string line;
-                double somma=0;
-                while ((line =sr.ReadLine()) != null)
+                double somma = 0;
+                while ((line = sr.ReadLine()) != null)
                 {
                     somma += double.Parse(line);
                 }
                 media = somma / 1440;
             }
-            return Math.Round(media,2);
+            return Math.Round(media, 2);
         }
     }
 }
